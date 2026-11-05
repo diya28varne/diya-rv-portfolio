@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960">
+  <defs>
+    <radialGradient id="threat" cx="85%" cy="0%" r="85%">
+      <stop offset="0%" stop-color="#e879f9"/>
+      <stop offset="42%" stop-color="#3b1764"/>
+      <stop offset="100%" stop-color="#100e18"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="960" fill="url(#threat)"/>
+  <text x="56" y="120" fill="#f5f7fb" font-family="ui-monospace, monospace" font-size="22" letter-spacing="3">01  /  INTRUSION DETECTION</text>
+  <text x="744" y="120" fill="#f5f7fb" font-family="ui-monospace, monospace" font-size="22" letter-spacing="3" text-anchor="end">2025 — PRESENT</text>
+  <text x="52" y="280" fill="#f5f7fb" font-family="Georgia, 'Times New Roman', serif" font-size="92">ThreatLens</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960">
+  <defs>
+    <radialGradient id="ref" cx="80%" cy="100%" r="85%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="42%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#100e18"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="960" fill="url(#ref)"/>
+  <text x="56" y="120" fill="#f5f7fb" font-family="ui-monospace, monospace" font-size="22" letter-spacing="3">03  /  IBM SKILLSBUILD</text>
+  <text x="744" y="132" fill="#f5f7fb" font-family="ui-monospace, monospace" font-size="48" letter-spacing="1" text-anchor="end">2024</text>
+  <text x="52" y="280" fill="#f5f7fb" font-family="Georgia, 'Times New Roman', serif" font-size="92">RefMind</text>
+</svg>
