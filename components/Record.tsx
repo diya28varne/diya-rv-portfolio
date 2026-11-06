@@ -5,7 +5,7 @@ export function Record() {
   return (
     <section
       id="achievements"
-      className="scroll-mt-8 rounded-[1.5rem] border border-white/[0.07] bg-[rgba(2,3,6,0.82)] px-5 py-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-xl sm:px-8"
+      className="scroll-mt-8 rounded-[1.5rem] border border-white/[0.07] bg-[rgba(2,3,6,0.72)] px-5 py-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-lg sm:px-8"
     >
       <Reveal tone="section">
         <h2 className="display max-w-xl text-3xl sm:text-4xl">I showed up outside class, too.</h2>
