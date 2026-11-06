@@ -4,12 +4,12 @@ import { nav, profile } from "@/lib/content";
 import { useEffect, useState } from "react";
 
 export function Nav() {
-  const [active, setActive] = useState(nav[0]?.href ?? "#about");
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => {
       const marker = window.innerHeight * 0.28;
-      let current = nav[0]?.href ?? "#about";
+      let current = "";
       for (const item of nav) {
         const section = document.getElementById(item.href.slice(1));
         if (section && section.getBoundingClientRect().top <= marker) current = item.href;

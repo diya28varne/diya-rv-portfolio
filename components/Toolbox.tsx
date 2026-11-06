@@ -4,20 +4,20 @@ import { skillGroups } from "@/lib/content";
 import { trailImagesFor } from "@/lib/skillTrailImages";
 import { ImageCursorTrail } from "@/components/ui/skiper-ui/skiper18";
 import { SkillMark } from "./SkillMark";
-import { Reveal } from "./Reveal";
+import { Reveal, RevealStagger } from "./Reveal";
 
 const chips = skillGroups.flatMap((group) => group.items);
 
 export function Toolbox() {
   return (
     <section id="skills" className="panel scroll-mt-8 px-5 py-10 sm:px-8">
-      <Reveal>
+      <Reveal tone="section">
         <p className="kicker">Skills</p>
         <h2 className="display mt-3 max-w-xl text-3xl sm:text-4xl">The Tools I Build With</h2>
       </Reveal>
       <div className="mt-10 space-y-10">
-        {skillGroups.map((group) => (
-          <div key={group.title}>
+        {skillGroups.map((group, groupIndex) => (
+          <Reveal key={group.title} tone="card" delay={groupIndex * 0.05}>
             <h3 className="text-lg text-white">{group.title}</h3>
             <p className="mt-1 text-sm text-ivory/55">{group.detail}</p>
             <ImageCursorTrail
@@ -27,21 +27,22 @@ export function Toolbox() {
               imgClass="size-14 rounded-xl object-cover shadow-lg sm:size-16"
               className="mt-4 rounded-2xl"
             >
-              <ul className="relative z-10 flex flex-wrap gap-3">
+              <RevealStagger className="relative z-10 flex flex-wrap gap-3" stagger={0.045}>
                 {group.items.map((item) => (
-                  <li key={item}>
-                    <div className="flex h-[7.6rem] w-[7.4rem] flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-black/45 px-2 transition-colors hover:border-white">
-                      <SkillMark name={item} />
-                      <span className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.08em] text-ivory/75">
-                        {item}
-                      </span>
-                    </div>
-                  </li>
+                  <div
+                    key={item}
+                    className="flex h-[7.6rem] w-[7.4rem] flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-black/45 px-2 transition-colors hover:border-white"
+                  >
+                    <SkillMark name={item} />
+                    <span className="text-center text-[10px] font-medium uppercase leading-tight tracking-[0.08em] text-ivory/75">
+                      {item}
+                    </span>
+                  </div>
                 ))}
-              </ul>
+              </RevealStagger>
             </ImageCursorTrail>
             {group.title === "Tools" ? <SkillMarquee /> : null}
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

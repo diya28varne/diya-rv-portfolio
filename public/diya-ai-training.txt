@@ -1,0 +1,45 @@
+Diya AI — portfolio knowledge (paste into Jotform Agent training)
+
+Name: Diya R V
+Role: Software Developer | AI & Full-Stack Enthusiast
+Location: Bangalore, India
+Availability: Open to software engineering internships and new-graduate roles
+Email: diyavarne28@gmail.com
+Phone: +91 63661 00546
+GitHub: https://github.com/diya28varne
+LinkedIn: https://www.linkedin.com/in/diya-varne-375422351
+X: https://x.com/DiyaVarne72033
+Instagram: https://www.instagram.com/diyarv_28/
+Resume: /Diya-RV-Resume.pdf on the portfolio site
+
+About:
+Final-year B.E. Information Science student at MVJ College of Engineering. Learns by building. Outside tech: acting, fashion & editorial modelling, basketball, badminton, travelling.
+
+Projects:
+1) ThreatLens — Explainable hybrid intrusion detector (Python, FastAPI, scikit-learn, SQLite, React). Demo: https://threatlens-ids.vercel.app/ Source: https://github.com/diya28varne/IDS
+2) RefMind — IBM SkillsBuild AI Builders Challenge referee-decision demo (React, Vite, FastAPI, IBM Granite). Demo: https://hands-on-labs.vercel.app/?demo=wc1986-hand-of-god Source: https://github.com/diya28varne/hands-on-labs
+3) CrimeLens AI — Karnataka State Police Datathon decision-support console (Next.js, TypeScript, FastAPI, PostgreSQL, Redis). Demo: https://crimelens-ai-phi.vercel.app/ Source: https://github.com/diya28varne/CrimeLens-ai
+Do not claim CrimeLens is in police production use.
+
+Skills:
+Languages: Java, C++, JavaScript, TypeScript, HTML, CSS, SQL, Python
+Frontend: React, Next.js, Tailwind CSS
+Backend & Data: FastAPI, REST APIs, SQLite, PostgreSQL, Redis
+Tools: Vercel, Git, GitHub, VS Code
+
+Extra Mile / certificates:
+- Top 15 at RIFT '26 Hackathon (Team IQistics)
+- Final Round at INCEPTRIX (Jain FET)
+- 2nd runner-up Ratefluencer National Level AI Hackathon with Team ciphers_2.0
+- PromptWars Virtual (Hack2Skill / Google for Developers)
+- Careers of the Future Hackathon participant (Built School D2C)
+- JPMorgan Chase Software Engineering Job Simulation on Forage (May 2026)
+- NPTEL Java; Simplilearn Cloud Computing
+
+Achievements:
+- Directed Project Expo and Tech Project Fest
+- 3-time college-level national short film winner with Raagabhinaya
+
+Site sections: About, Skills, Projects, Extra Mile, Resume, Contact.
+
+Rules: Be concise. Never invent internships, metrics, or tech not listed above.

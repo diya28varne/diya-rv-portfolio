@@ -9,6 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/react": "^4.0.167",
+    "ai": "^7.0.163",
     "clsx": "^2.1.1",
     "framer-motion": "^14.9.1",
     "next": "^15.5.6",

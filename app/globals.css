@@ -22,6 +22,8 @@
 html {
   scroll-behavior: smooth;
   background-color: #0a0c12;
+  /* Softer native scroll feel while reading the page. */
+  scroll-padding-top: 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -457,6 +459,31 @@ body::before {
   100% {
     opacity: 0;
   }
+}
+
+.resume-preview {
+  scrollbar-width: thin;
+  scrollbar-color: #5c616a #e7e5e1;
+}
+
+.resume-preview::-webkit-scrollbar {
+  width: 10px;
+}
+
+.resume-preview::-webkit-scrollbar-track {
+  background: #e7e5e1;
+  border-radius: 999px;
+  margin: 6px 0;
+}
+
+.resume-preview::-webkit-scrollbar-thumb {
+  background: #5c616a;
+  border-radius: 999px;
+  border: 2px solid #e7e5e1;
+}
+
+.resume-preview::-webkit-scrollbar-thumb:hover {
+  background: #43484f;
 }
 
 @media (prefers-reduced-motion: reduce) {

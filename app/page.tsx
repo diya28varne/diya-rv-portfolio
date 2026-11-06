@@ -1,8 +1,9 @@
 import { About } from "@/components/About";
 import { Assemble } from "@/components/Assemble";
+import { Certificates } from "@/components/Certificates";
 import { Contact } from "@/components/Contact";
 import { Nav } from "@/components/Nav";
-import { Record } from "@/components/Record";
+import { AiGuide } from "@/components/AiGuide";
 import { Resume } from "@/components/Resume";
 import { Toolbox } from "@/components/Toolbox";
 import { Work } from "@/components/Work";
@@ -19,11 +20,12 @@ export default function HomePage() {
           <About />
           <Toolbox />
           <Work />
-          <Record />
+          <Certificates />
           <Resume />
           <Contact />
         </main>
       </div>
+      <AiGuide />
     </div>
   );
 }

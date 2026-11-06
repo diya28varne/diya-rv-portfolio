@@ -2,9 +2,10 @@
 
 import { RollingText } from "@/components/ui/skiper-ui/skiper27";
 import { profile } from "@/lib/content";
+import { Reveal } from "./Reveal";
 
 const lines = [
-  "“Learning 1% every day,",
+  "“Growing 1% every day,",
   "finding inspiration",
   "in the unexpected,",
   "and building things worth",
@@ -15,14 +16,16 @@ export function Assemble() {
   return (
     <div className="px-5 pb-10 pt-0 sm:px-8 sm:pb-14">
       <h1 className="sr-only">
-        “Learning 1% every day, finding inspiration in the unexpected, and building things worth
+        “Growing 1% every day, finding inspiration in the unexpected, and building things worth
         sharing with the world.”
       </h1>
-      <p className="display mt-[1.05em] mb-[1.05em] text-center text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-[-0.03em] text-[#e4c36a]">
-        The mind behind the bytes.
-      </p>
+      <Reveal tone="section">
+        <p className="display mt-[1.05em] mb-[1.05em] text-center text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-[-0.03em] text-[#e4c36a]">
+          The mind behind the bytes.
+        </p>
+      </Reveal>
       <div className="flex flex-row items-center justify-start gap-5 sm:gap-10">
-        <div className="relative w-[36%] max-w-sm shrink-0 overflow-hidden rounded-[1.2rem] sm:rounded-[1.4rem]">
+        <Reveal tone="card" className="relative w-[36%] max-w-sm shrink-0 overflow-hidden rounded-[1.2rem] sm:rounded-[1.4rem]">
           <img
             src="/me/diya.jpg?v=7"
             alt={profile.name}
@@ -30,8 +33,8 @@ export function Assemble() {
             height={1024}
             className="h-auto w-full"
           />
-        </div>
-        <div className="flex min-w-0 flex-1 flex-col text-left">
+        </Reveal>
+        <Reveal delay={0.12} tone="section" className="flex min-w-0 flex-1 flex-col text-left">
           <div className="flex flex-col gap-[0.18em] font-serif text-[clamp(1.35rem,3.4vw,2.55rem)] leading-[1.15] tracking-[-0.03em] text-ivory">
             {lines.map((line) => (
               <RollingText
@@ -50,7 +53,7 @@ export function Assemble() {
             <LocationPin />
             <span>{profile.location}</span>
           </p>
-        </div>
+        </Reveal>
       </div>
     </div>
   );
