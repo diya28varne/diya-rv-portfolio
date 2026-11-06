@@ -3,15 +3,18 @@ import { Reveal } from "./Reveal";
 
 export function Record() {
   return (
-    <section id="achievements" className="panel scroll-mt-8 px-5 py-10 sm:px-8">
+    <section
+      id="achievements"
+      className="scroll-mt-8 rounded-[1.5rem] border border-white/[0.08] bg-[rgba(4,6,10,0.62)] px-5 py-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:px-8"
+    >
       <Reveal tone="section">
         <h2 className="display max-w-xl text-3xl sm:text-4xl">I showed up outside class, too.</h2>
       </Reveal>
       <div className="mt-10 grid gap-4">
         {achievements.map((item, index) => (
           <Reveal key={item.title} tone="card" delay={index * 0.08}>
-            <article className="flex flex-col gap-4 rounded-[1.25rem] border border-white/10 bg-[rgba(8,11,16,0.72)] p-3 sm:flex-row sm:items-stretch sm:p-4">
-              <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-xl border border-white/10 bg-black/40 sm:h-auto sm:w-[11rem] lg:w-[12.5rem]">
+            <article className="flex flex-col gap-4 rounded-[1.25rem] border border-white/[0.08] bg-[rgba(0,0,0,0.38)] p-3 backdrop-blur-md sm:flex-row sm:items-stretch sm:p-4">
+              <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-xl border border-white/10 bg-black/50 sm:h-auto sm:w-[11rem] lg:w-[12.5rem]">
                 <img src={item.image} alt="" className="size-full object-cover object-center" />
               </div>
               <div className="flex min-w-0 flex-1 flex-col justify-center px-1 pb-1 sm:py-1 sm:pr-2">
