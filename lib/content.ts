@@ -9,7 +9,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/diya-varne-375422351",
   twitter: "https://x.com/DiyaVarne72033",
   instagram: "https://www.instagram.com/diyarv_28/",
-  resume: "/Diya-RV-Resume.pdf?v=6",
+  resume: "/Diya-RV-Resume.pdf?v=7",
   availability: "Open to software engineering internships and new-graduate roles",
 };
 

@@ -186,14 +186,49 @@ def build(scale=1.12, gap=1.0):
         y,
         contact_sz,
     )
-    y = draw_contact_row(
-        [
-            ("LinkedIn: ", "linkedin.com/in/diya-varne-375422351"),
-            ("GitHub: ", "github.com/diya28varne"),
-        ],
-        y,
-        contact_sz,
+    # Second contact row with real clickable LinkedIn / GitHub URLs (like a live resume PDF).
+    contact2 = [
+        ("LinkedIn: ", "linkedin.com/in/diya-varne-375422351", "https://www.linkedin.com/in/diya-varne-375422351"),
+        ("GitHub: ", "github.com/diya28varne", "https://github.com/diya28varne"),
+    ]
+    size2 = contact_sz
+    parts2 = []
+    for i, (lab, val, _url) in enumerate(contact2):
+        parts2.append((lab, val, _url))
+        if i < len(contact2) - 1:
+            parts2.append((" | ", None, None))
+    total2 = sum(
+        c.stringWidth(lab, "Calibri", size2)
+        + (c.stringWidth(val, "Calibri-Bold", size2) if val else 0)
+        for lab, val, _ in parts2
     )
+    while total2 > width and size2 > 7.5:
+        size2 -= 0.2
+        total2 = sum(
+            c.stringWidth(lab, "Calibri", size2)
+            + (c.stringWidth(val, "Calibri-Bold", size2) if val else 0)
+            for lab, val, _ in parts2
+        )
+    x2 = (W - total2) / 2
+    for lab, val, url in parts2:
+        if val is None:
+            c.setFont("Calibri", size2)
+            c.setFillColor(BODY)
+            c.drawString(x2, y, lab)
+            x2 += c.stringWidth(lab, "Calibri", size2)
+        else:
+            c.setFont("Calibri", size2)
+            c.setFillColor(BODY)
+            c.drawString(x2, y, lab)
+            x2 += c.stringWidth(lab, "Calibri", size2)
+            c.setFont("Calibri-Bold", size2)
+            c.setFillColor(HexColor("#0b57d0"))
+            c.drawString(x2, y, val)
+            vw = c.stringWidth(val, "Calibri-Bold", size2)
+            c.linkURL(url, (x2 - 1, y - 2, x2 + vw + 1, y + size2 + 1), relative=0, thickness=0)
+            x2 += vw
+    y -= contact_sz + 3.5
+    c.setFillColor(BODY)
     y -= 6 * scale + sec * 0.35
 
     y = heading("PROFILE", y)
@@ -251,34 +286,33 @@ def build(scale=1.12, gap=1.0):
                 + c.stringWidth(sep, "Calibri", body)
                 + c.stringWidth(dm, "Calibri-Bold", body)
             )
-        lines = wrap(c, "•  " + text, "Calibri", body, width - (link_w + 4 if link_w else 0))
+        lines = wrap(c, "•  " + text, "Calibri", body, width - (link_w + 6 if link_w else 0))
         for i, line in enumerate(lines):
             c.setFont("Calibri", body)
             c.drawString(left, y, line)
             if github and demo and i == len(lines) - 1:
                 x = left + c.stringWidth(line, "Calibri", body)
-                # Clickable PDF annotations for GitHub + Demo.
-                c.setFont("Calibri-Bold", body)
-                c.setFillColor(HexColor("#0b57d0"))
-                c.drawString(x, y, gh)
-                c.linkURL(
-                    github,
-                    (x, y - 2, x + c.stringWidth(gh, "Calibri-Bold", body), y + body),
-                    relative=0,
-                )
-                x += c.stringWidth(gh, "Calibri-Bold", body)
+
+                def draw_link(label, url, x0):
+                    c.setFont("Calibri-Bold", body)
+                    c.setFillColor(HexColor("#0b57d0"))
+                    c.drawString(x0, y, label)
+                    w = c.stringWidth(label, "Calibri-Bold", body)
+                    # Generous hit box so clicks register in Chrome's PDF viewer.
+                    c.linkURL(
+                        url,
+                        (x0 - 1, y - 3, x0 + w + 1, y + body + 1),
+                        relative=0,
+                        thickness=0,
+                    )
+                    return x0 + w
+
+                x = draw_link(gh, github, x)
                 c.setFont("Calibri", body)
                 c.setFillColor(BODY)
                 c.drawString(x, y, sep)
                 x += c.stringWidth(sep, "Calibri", body)
-                c.setFont("Calibri-Bold", body)
-                c.setFillColor(HexColor("#0b57d0"))
-                c.drawString(x, y, dm)
-                c.linkURL(
-                    demo,
-                    (x, y - 2, x + c.stringWidth(dm, "Calibri-Bold", body), y + body),
-                    relative=0,
-                )
+                draw_link(dm, demo, x)
                 c.setFillColor(BODY)
             y -= lh - 0.4 * scale
         return y
