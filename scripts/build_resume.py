@@ -192,7 +192,8 @@ def build(scale=1.12, gap=1.0):
     contact2 = [
         ("LinkedIn: ", "linkedin.com/in/diya-varne-375422351", "https://www.linkedin.com/in/diya-varne-375422351"),
         ("GitHub: ", "github.com/diya28varne", "https://github.com/diya28varne"),
-        ("Portfolio: ", "diyarv.me", "https://diyarv.me"),
+        # Live site until diyarv.me is purchased + DNS is connected.
+        ("Portfolio: ", "diya-rv-portfolio.vercel.app", "https://diya-rv-portfolio.vercel.app"),
     ]
     size2 = contact_sz
     parts2 = []
