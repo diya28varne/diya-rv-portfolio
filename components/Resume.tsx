@@ -12,7 +12,7 @@ const included = [
   "Campus leadership",
 ];
 
-const PREVIEW = "/resume/scroll.png?v=8";
+const PREVIEW = "/resume/scroll.png?v=9";
 
 export function Resume() {
   return (

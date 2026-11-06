@@ -188,10 +188,11 @@ def build(scale=1.12, gap=1.0):
         y,
         contact_sz,
     )
-    # Second contact row with real clickable LinkedIn / GitHub URLs (like a live resume PDF).
+    # Second contact row: LinkedIn | GitHub | Portfolio (clickable, same layout as reference).
     contact2 = [
         ("LinkedIn: ", "linkedin.com/in/diya-varne-375422351", "https://www.linkedin.com/in/diya-varne-375422351"),
         ("GitHub: ", "github.com/diya28varne", "https://github.com/diya28varne"),
+        ("Portfolio: ", "diyarv.me", "https://diyarv.me"),
     ]
     size2 = contact_sz
     parts2 = []
