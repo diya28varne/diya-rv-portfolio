@@ -44,11 +44,12 @@ export function Resume() {
                 Open in new tab
               </a>
             </div>
-            <div className="resume-preview h-[28rem] overflow-y-auto overflow-x-hidden rounded-xl border border-white/10 bg-[#f4f4f2] sm:h-[32rem]">
-              <img
-                src="/resume/scroll.png?v=5"
-                alt="Preview of Diya R V resume PDF"
-                className="block w-full"
+            <div className="resume-preview h-[28rem] overflow-hidden rounded-xl border border-white/10 bg-[#f4f4f2] sm:h-[32rem]">
+              {/* Real PDF so GitHub / Demo links are clickable (the old PNG preview was not). */}
+              <iframe
+                title="Diya R V resume preview"
+                src={`${profile.resume}${profile.resume.includes("?") ? "&" : "?"}preview=1#view=FitH`}
+                className="block h-full w-full border-0 bg-white"
               />
             </div>
           </div>

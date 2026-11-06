@@ -58,18 +58,24 @@ PROJECTS = [
         "Python, FastAPI, scikit-learn, SQLite, React",
         "Explainable hybrid intrusion detector for network flows: a supervised model and an anomaly model score the same record, then a decision layer turns that into a priority and a reason so the investigation can be replayed.",
         "Built Random Forest + Isolation Forest scoring with FastAPI predict/alert/history endpoints, SQLite alert storage, and a React dashboard for overview and traffic analysis on a documented CICIDS2017 holdout.",
+        "https://github.com/diya28varne/IDS",
+        "https://threatlens-ids.vercel.app/",
     ),
     (
         "RefMind",
         "React, Vite, FastAPI, IBM Granite",
         "Explainable referee-decision demo for the IBM SkillsBuild AI Builders Challenge where a fan votes first, then sees the rule, camera view, and why disagreement can remain.",
         "Built a React/Vite frontend and FastAPI backend that grounds explanations in IFAB laws with IBM Granite tooling, including a demo path that runs without API keys.",
+        "https://github.com/diya28varne/hands-on-labs",
+        "https://hands-on-labs.vercel.app/?demo=wc1986-hand-of-god",
     ),
     (
         "CrimeLens AI",
         "Next.js, TypeScript, FastAPI, PostgreSQL, Redis",
         "Decision-support console for reading incidents spatially with maps, prediction, network views, and written briefings, keeping a person in the loop before anyone acts on a score.",
         "Built a Next.js console and FastAPI service with PostgreSQL/PostGIS + Redis, JWT role scoping by district or station, and an English/Kannada interface.",
+        "https://github.com/diya28varne/CrimeLens-ai",
+        "https://crimelens-ai-phi.vercel.app/",
     ),
 ]
 
@@ -231,31 +237,61 @@ def build(scale=1.12, gap=1.0):
 
     y = heading("PROJECTS", y)
 
-    def bullet(text, links=False):
+    def bullet(text, github=None, demo=None):
         nonlocal y
         c.setFont("Calibri", body)
         c.setFillColor(BODY)
-        link = " GitHub | Demo"
-        link_w = c.stringWidth(link, "Calibri-Bold", body) if links else 0
-        lines = wrap(c, "•  " + text, "Calibri", body, width - (link_w + 4 if links else 0))
+        gh = " GitHub"
+        sep = " | "
+        dm = "Demo"
+        link_w = 0
+        if github and demo:
+            link_w = (
+                c.stringWidth(gh, "Calibri-Bold", body)
+                + c.stringWidth(sep, "Calibri", body)
+                + c.stringWidth(dm, "Calibri-Bold", body)
+            )
+        lines = wrap(c, "•  " + text, "Calibri", body, width - (link_w + 4 if link_w else 0))
         for i, line in enumerate(lines):
             c.setFont("Calibri", body)
             c.drawString(left, y, line)
-            if links and i == len(lines) - 1:
+            if github and demo and i == len(lines) - 1:
+                x = left + c.stringWidth(line, "Calibri", body)
+                # Clickable PDF annotations for GitHub + Demo.
                 c.setFont("Calibri-Bold", body)
-                c.drawString(left + c.stringWidth(line, "Calibri", body), y, link)
+                c.setFillColor(HexColor("#0b57d0"))
+                c.drawString(x, y, gh)
+                c.linkURL(
+                    github,
+                    (x, y - 2, x + c.stringWidth(gh, "Calibri-Bold", body), y + body),
+                    relative=0,
+                )
+                x += c.stringWidth(gh, "Calibri-Bold", body)
+                c.setFont("Calibri", body)
+                c.setFillColor(BODY)
+                c.drawString(x, y, sep)
+                x += c.stringWidth(sep, "Calibri", body)
+                c.setFont("Calibri-Bold", body)
+                c.setFillColor(HexColor("#0b57d0"))
+                c.drawString(x, y, dm)
+                c.linkURL(
+                    demo,
+                    (x, y - 2, x + c.stringWidth(dm, "Calibri-Bold", body), y + body),
+                    relative=0,
+                )
+                c.setFillColor(BODY)
             y -= lh - 0.4 * scale
         return y
 
-    for title, stack, b1, b2 in PROJECTS:
+    for title, stack, b1, b2, github, demo in PROJECTS:
         c.setFont("Calibri-Bold", label_sz)
         c.setFillColor(BODY)
         c.drawString(left, y, title)
         c.setFont("Calibri-Italic", body)
         c.drawRightString(right, y, stack)
         y -= lh + 0.8 * scale
-        bullet(b1, False)
-        bullet(b2, True)
+        bullet(b1)
+        bullet(b2, github=github, demo=demo)
         y -= 4.5 * scale + sec * 0.25
 
     y = heading("ACHIEVEMENTS", y)
