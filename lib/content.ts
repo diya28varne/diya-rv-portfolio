@@ -10,7 +10,7 @@ export const profile = {
   twitter: "https://x.com/DiyaVarne72033",
   instagram: "https://www.instagram.com/diyarv_28/",
   site: "https://diya-rv-portfolio.vercel.app",
-  resume: "/Diya-RV-Resume.pdf?v=10",
+  resume: "/Diya-RV-Resume.pdf?v=11",
   availability: "Open to software engineering internships and new-graduate roles",
 };
 

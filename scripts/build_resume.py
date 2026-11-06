@@ -226,7 +226,7 @@ def build(scale=1.12, gap=1.0):
             c.drawString(x2, y, lab)
             x2 += c.stringWidth(lab, "Calibri", size2)
             c.setFont("Calibri-Bold", size2)
-            c.setFillColor(HexColor("#0b57d0"))
+            c.setFillColor(BLACK)
             c.drawString(x2, y, val)
             vw = c.stringWidth(val, "Calibri-Bold", size2)
             c.linkURL(url, (x2 - 1, y - 2, x2 + vw + 1, y + size2 + 1), relative=0, thickness=0)
@@ -299,7 +299,7 @@ def build(scale=1.12, gap=1.0):
 
                 def draw_link(label, url, x0):
                     c.setFont("Calibri-Bold", body)
-                    c.setFillColor(HexColor("#0b57d0"))
+                    c.setFillColor(BLACK)
                     c.drawString(x0, y, label)
                     w = c.stringWidth(label, "Calibri-Bold", body)
                     # Generous hit box so clicks register in Chrome's PDF viewer.
