@@ -58,7 +58,8 @@ ${achBlock}
 - About → #about
 - Skills → #skills
 - Projects → #work
-- Extra Mile (certificates & achievements) → #certificates
+- Extra Mile (certificates) → #certificates
+- Outside class (campus leadership & films) → #achievements
 - Resume → #resume
 - Contact → #contact
 `.trim();

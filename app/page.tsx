@@ -4,6 +4,7 @@ import { Certificates } from "@/components/Certificates";
 import { Contact } from "@/components/Contact";
 import { Nav } from "@/components/Nav";
 import { AiGuide } from "@/components/AiGuide";
+import { Record } from "@/components/Record";
 import { Resume } from "@/components/Resume";
 import { Toolbox } from "@/components/Toolbox";
 import { Work } from "@/components/Work";
@@ -21,6 +22,7 @@ export default function HomePage() {
           <Toolbox />
           <Work />
           <Certificates />
+          <Record />
           <Resume />
           <Contact />
         </main>
