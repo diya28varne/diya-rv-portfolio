@@ -1,6 +1,7 @@
 "use client";
 
 import { profile } from "@/lib/content";
+import resumeLinks from "@/public/resume/links.json";
 import { Reveal } from "./Reveal";
 
 const included = [
@@ -10,6 +11,8 @@ const included = [
   "Certificates",
   "Campus leadership",
 ];
+
+const PREVIEW = "/resume/scroll.png?v=8";
 
 export function Resume() {
   return (
@@ -44,13 +47,27 @@ export function Resume() {
                 Open in new tab
               </a>
             </div>
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-white shadow-2xl">
-              {/* Same PDF embed as a working portfolio resume: toolbar off, real URI links. */}
-              <iframe
-                title="Diya R V resume preview"
-                src={`${profile.resume.split("?")[0]}?v=7#toolbar=0&navpanes=0`}
-                className="block h-[min(85vh,960px)] w-full border-0 bg-white"
-              />
+            <div className="resume-preview h-[min(85vh,960px)] overflow-y-auto overflow-x-hidden rounded-xl border border-white/10 bg-[#f4f4f2] shadow-2xl">
+              {/* PNG preview = no browser PDF toolbar. Overlays keep GitHub/Demo clickable. */}
+              <div className="relative block w-full">
+                <img src={PREVIEW} alt="Preview of Diya R V resume PDF" className="block w-full" />
+                {resumeLinks.map((link) => (
+                  <a
+                    key={`${link.href}-${link.left}-${link.top}`}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={linkLabel(link.href)}
+                    className="absolute z-10"
+                    style={{
+                      left: `${link.left}%`,
+                      top: `${link.top}%`,
+                      width: `${link.width}%`,
+                      height: `${Math.max(link.height, 1.4)}%`,
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -97,6 +114,13 @@ export function Resume() {
       </Reveal>
     </section>
   );
+}
+
+function linkLabel(href: string) {
+  if (href.includes("linkedin.com")) return "LinkedIn profile";
+  if (href.includes("github.com") && href.split("/").length <= 4) return "GitHub profile";
+  if (href.includes("github.com")) return "Project GitHub";
+  return "Project demo";
 }
 
 function FileIcon() {

@@ -1,9 +1,11 @@
 """Build Diya's one-page A4 resume PDF + preview PNGs."""
 from pathlib import Path
+import json
 
 import numpy as np
 import pypdfium2 as pdfium
 from PIL import Image
+from pypdf import PdfReader
 from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import inch
@@ -380,6 +382,27 @@ def main():
     pil.save(PREV / "page-1.png", "PNG", optimize=True)
     pil.save(PREV / "scroll.png", "PNG", optimize=True)
 
+    # Overlay hit-boxes for the PNG preview (avoids Chrome's PDF toolbar UI).
+    page_w, page_h = A4
+    links = []
+    for annot in PdfReader(str(OUT)).pages[0]["/Annots"]:
+        obj = annot.get_object()
+        action = obj.get("/A") or {}
+        uri = action.get("/URI")
+        if not uri:
+            continue
+        x1, y1, x2, y2 = [float(v) for v in obj["/Rect"]]
+        links.append(
+            {
+                "href": str(uri),
+                "left": round(x1 / page_w * 100, 3),
+                "top": round((page_h - y2) / page_h * 100, 3),
+                "width": round((x2 - x1) / page_w * 100, 3),
+                "height": round((y2 - y1) / page_h * 100, 3),
+            }
+        )
+    (PREV / "links.json").write_text(json.dumps(links, indent=2), encoding="utf-8")
+
     arr = np.array(pil.convert("L"))
     rows = (arr < 250).any(axis=1)
     last = int(np.where(rows)[0].max())
@@ -391,6 +414,7 @@ def main():
         "| empty bottom %",
         round((arr.shape[0] - last) / arr.shape[0] * 100, 1),
     )
+    print("preview links", len(links))
 
 
 if __name__ == "__main__":
