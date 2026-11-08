@@ -10,6 +10,9 @@ const tile = (label: string, fill: string, ink = "#111") =>
   );
 
 export const skillTrailImages: Record<string, string> = {
+  Java: tile("Ja", "#e76f00", "#fff"),
+  "C++": tile("C+", "#00599c", "#fff"),
+  SQL: tile("SQL", "#e38c00", "#fff"),
   HTML: tile("HTML", "#e34f26", "#fff"),
   CSS: tile("CSS", "#1572b6", "#fff"),
   JavaScript: tile("JS", "#f7df1e"),

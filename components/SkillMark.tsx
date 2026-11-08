@@ -69,6 +69,9 @@ function Gemini({ id }: { id: string }) {
 }
 
 const marks: Record<string, ReactNode> = {
+  Java: <LetterTile label="Ja" fill="#e76f00" ink="#fff" />,
+  "C++": <LetterTile label="C+" fill="#00599c" ink="#fff" />,
+  SQL: <LetterTile label="SQL" fill="#e38c00" ink="#fff" />,
   HTML: <Shield back="#e34f26" front="#f06529" label="5" />,
   CSS: <Shield back="#1572b6" front="#33a9dc" label="3" />,
   JavaScript: <LetterTile label="JS" fill="#f7df1e" />,
